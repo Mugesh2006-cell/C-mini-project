@@ -1,0 +1,63 @@
+CODE :
+
+int pirPin = 2;     
+2
+int ledPin = 13;     
+3
+int buzzerPin = 8;   
+4
+int pirState = LOW;
+5
+int val = 0;
+6
+​
+7
+void setup() {
+8
+  pinMode(pirPin, INPUT);
+9
+  pinMode(ledPin, OUTPUT);
+10
+  pinMode(buzzerPin, OUTPUT);
+11
+  Serial.begin(9600);
+12
+}
+13
+​
+14
+void loop() {
+15
+  val = digitalRead(pirPin);
+16
+  if (val == HIGH) {
+17
+    digitalWrite(ledPin, HIGH);
+18
+    digitalWrite(buzzerPin, HIGH);
+19
+    if (pirState == LOW) {
+20
+      Serial.println("Motion detected!");
+21
+      pirState = HIGH;
+22
+    }
+23
+  } else {
+24
+    digitalWrite(ledPin, LOW);
+25
+    digitalWrite(buzzerPin, LOW);
+26
+    if (pirState == HIGH) {
+27
+      Serial.println("Motion ended!");
+28
+      pirState = LOW;
+29
+    }
+30
+  }
+31
+}
